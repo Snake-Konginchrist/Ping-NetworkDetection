@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>PING自动化探测工具</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@200;300&display=auto" rel="stylesheet">
+</head>
+<body>
+    <h1>斯黄建设三十四日制PING自动化探测工具</h1>
+    <h2>探测发起地域：中国上海</h2>
+    <label for="targetInput">输入域名或IP地址：</label>
+    <input type="text" id="targetInput" placeholder="例如: www.example.com 或 192.168.1.1">
+    <br>
+    <label for="intervalSelect">选择探测间隔：</label>
+    <select id="intervalSelect">
+        <option value="900">15分钟</option>
+        <option value="1800">30分钟</option>
+        <option value="3600">1小时</option>
+        <option value="21600">6小时</option>
+        <option value="43200">12小时</option>
+        <option value="86400">24小时</option>
+    </select>
+    <button onclick="startPing()">开始探测</button>
+    <button onclick="stopPing()">停止探测</button>
+
+    <h2>历史探测结果：</h2>
+    <div id="results"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // 页面加载完成后执行fetchResults函数
+        window.onload = function() {
+            // fetchResults();
+            const resultsElement = document.getElementById('results');
+            resultsElement.scrollTop = resultsElement.scrollHeight;
+        };
+    </script>
+</body>
+</html>
